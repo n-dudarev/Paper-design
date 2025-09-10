@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Inter+Tight:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: auto;
+            background: #ffffff;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1400px; /* Примерно 4*320 + 3*20 */
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 15px;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+        .card {
+            align-items: center;
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: #0000000D 0px 0px 0px 1px, #00000033 0px 4px 32px -12px;
+            box-sizing: border-box;
+            contain: content;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 418px;
+            justify-content: start;
+            overflow-wrap: break-word;
+            padding-block: 16px;
+            padding-inline: 16px;
+            transform-origin: 0% 0%;
+            min-width: 320px;
+            width: 100%;
+        }
+        .image {
+            align-self: stretch;
+            background-image: url("https://workers.paper.design/file-assets/01K4MMZSNJ9RVKTEVV261VKZS2/01K4QG0027GZNFPTG6PNV1KCNP.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 2px;
+            box-sizing: border-box;
+            flex: 1 0 0px;
+            flex-basis: 0px;
+            flex-grow: 1;
+            flex-shrink: 0;
+            height: auto;
+            max-height: none;
+            max-width: none;
+            position: relative;
+            transform-origin: 50% 50%;
+            width: auto;
+        }
+        .content {
+            align-items: start;
+            align-self: stretch;
+            box-sizing: border-box;
+            contain: layout;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 8px;
+            height: fit-content;
+            justify-content: start;
+            overflow-wrap: break-word;
+            padding-block: 0;
+            padding-inline: 0;
+            transform-origin: 50% 50%;
+            width: auto;
+        }
+        .title-section {
+            align-items: start;
+            align-self: stretch;
+            box-sizing: border-box;
+            contain: layout;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 0;
+            height: fit-content;
+            justify-content: start;
+            overflow-wrap: break-word;
+            padding-block: 0;
+            padding-inline: 0;
+            transform-origin: 50% 50%;
+            width: auto;
+        }
+        .title {
+            align-self: stretch;
+            box-sizing: border-box;
+            color: #222222;
+            flex-shrink: 0;
+            font-family: "Inter Tight", system-ui, sans-serif;
+            font-size: 24px;
+            font-synthesis: none;
+            font-weight: 900;
+            height: fit-content;
+            line-height: 28px;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            transform-origin: 50% 50%;
+            -webkit-font-smoothing: antialiased;
+            white-space: pre-wrap;
+            width: auto;
+        }
+        .subtitle {
+            align-self: stretch;
+            box-sizing: border-box;
+            color: #222222;
+            flex-shrink: 0;
+            font-family: "Inter Tight", system-ui, sans-serif;
+            font-size: 22px;
+            font-synthesis: none;
+            font-weight: 400;
+            height: fit-content;
+            line-height: 28px;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            transform-origin: 50% 50%;
+            -webkit-font-smoothing: antialiased;
+            white-space: pre-wrap;
+            width: auto;
+        }
+        .details {
+            align-items: start;
+            align-self: stretch;
+            box-sizing: border-box;
+            contain: layout;
+            display: flex;
+            flex-direction: row;
+            flex-shrink: 0;
+            gap: 6px;
+            height: fit-content;
+            justify-content: center;
+            overflow-wrap: break-word;
+            padding-block: 0;
+            padding-inline: 0;
+            transform-origin: 50% 50%;
+            width: auto;
+        }
+        .detail {
+            box-sizing: border-box;
+            color: #00000099;
+            flex-shrink: 0;
+            font-family: "Inter", system-ui, sans-serif;
+            font-size: 12px;
+            font-synthesis: none;
+            font-weight: 400;
+            height: fit-content;
+            line-height: 150%;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            transform-origin: 50% 50%;
+            -webkit-font-smoothing: antialiased;
+            white-space: pre;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="cards-container">
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Abbey Road</div>
+                    <div class="subtitle">The Beatles</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1969</div>
+                    <div class="detail">•</div>
+                    <div class="detail">47 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Thriller</div>
+                    <div class="subtitle">Michael Jackson</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Pop</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1982</div>
+                    <div class="detail">•</div>
+                    <div class="detail">42 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Dark Side of the Moon</div>
+                    <div class="subtitle">Pink Floyd</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Progressive Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1973</div>
+                    <div class="detail">•</div>
+                    <div class="detail">43 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://i.scdn.co/image/ab67616d0000b2730b51f8d91f3a21e8426361ae');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Back in Black</div>
+                    <div class="subtitle">AC/DC</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Hard Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1980</div>
+                    <div class="detail">•</div>
+                    <div class="detail">42 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/4/49/Hotelcalifornia.jpg');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Hotel California</div>
+                    <div class="subtitle">Eagles</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1976</div>
+                    <div class="detail">•</div>
+                    <div class="detail">43 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Nevermind</div>
+                    <div class="subtitle">Nirvana</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Grunge</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1991</div>
+                    <div class="detail">•</div>
+                    <div class="detail">43 minutes</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" style="background-image: url('https://i.scdn.co/image/ab67616d0000b273c8a11e48c91a982d086afc69');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">The Wall</div>
+                    <div class="subtitle">Pink Floyd</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Progressive Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1979</div>
+                    <div class="detail">•</div>
+                    <div class="detail">81 minutes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg');"></div>
+            <div class="content">
+                <div class="title-section">
+                    <div class="title">Led Zeppelin IV</div>
+                    <div class="subtitle">Led Zeppelin</div>
+                </div>
+                <div class="details">
+                    <div class="detail">Hard Rock</div>
+                    <div class="detail">•</div>
+                    <div class="detail">1971</div>
+                    <div class="detail">•</div>
+                    <div class="detail">43 minutes</div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
